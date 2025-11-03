@@ -12,15 +12,19 @@ class Usuario {
     public $conexao;
 
 
-    public function __construct($nome, $email, $nome_usuario) {
+    public function __construct($nome, $email, $nome_usuario, $tipo_acesso, $status_acesso) {
         $this->nome = $nome;
         $this->email = $email;
         $this->nome_usuario = $nome_usuario;
+        $this->tipo_acesso = $tipo_acesso;
+        $this->status_acesso = $status_acesso;
+        
     }
 
-    public function inserir(){
+    public function buscarUsuarios(){
         $this->conexao = new Conexao();
-        $consulta = $this->conexao->prepare("INSERT INTO usuario (nome, email, nome_usuario) VALUES(?,?,?)");      
-        $consulta->execute([$this->nome, $this->email, $this->nome_usuario]);
+        $consulta = $this->conexao->prepare("SELECT id_usuario, nome, nome_usuario, email, tipo_acesso, status_acesso FROM usuario");      
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
     }
 }
