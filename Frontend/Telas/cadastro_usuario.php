@@ -42,8 +42,6 @@ require_once "../../Backend/Classes/Usuario.php";
                     } else {
                         echo "<input type= 'button' value= 'HABILITAR'>";
                     }
-                    echo "<td>";
-                    echo "</tr>";
                 }
             } else {
                 echo "<tr><td colspan= '6'>Nenhum usuario enconstrado.</td></tr>";
