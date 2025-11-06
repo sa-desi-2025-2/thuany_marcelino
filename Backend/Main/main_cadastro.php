@@ -1,6 +1,4 @@
 <?php
-echo "<pre>Rodando arquivo: " . __FILE__ . "</pre>";
-
 
 require_once __DIR__ . "/../Classes/Conexao.php";
 require_once __DIR__ . "/../Classes/Usuario.php";

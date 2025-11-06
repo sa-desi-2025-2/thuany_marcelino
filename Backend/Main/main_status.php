@@ -1,6 +1,7 @@
 <?php
-// define que vai responder os dados como JSON não como HTML
+// define que vai responder os dados como JSON (tipo de texto para enviar os dados)
 header('Content-Type: application/json');
+
 require_once "../Classes/Conexao.php";
 require_once "../Classes/Usuario.php";
 
@@ -12,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'], $_POST['novo_st
 
     try {
         $usuario = new Usuario();
-        // chama método para alterar
+        
         $resultado = $usuario->alterarStatus($id, $novo_status);
 
         if ($resultado === true) {
@@ -20,12 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'], $_POST['novo_st
         } else {
             echo json_encode(['success' => false, 'message' => 'Erro ao atualizar status.', 'detalhes' => $resultado]);
         }
-        // para erros de conexao
+        
     } catch (Exception $e) {
         http_response_code(500);
         echo json_encode(['success' => false, 'message' => $e->getMessage()]);
     }
-    // se não for POST cai no erro
+    
 } else {
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => 'Requisição inválida.']);

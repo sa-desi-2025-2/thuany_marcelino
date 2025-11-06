@@ -42,7 +42,7 @@ require_once "../../Backend/Classes/Usuario.php";
                     $email = htmlspecialchars($Usuario["email"] ?? '');
                     $tipo_acesso = htmlspecialchars($Usuario["tipo_acesso"] ?? 'USUARIO');
                     $status_acesso = htmlspecialchars($Usuario["status_acesso"] ?? '');
-                    // para saber qual registro atualizar no banco
+                    // para saber qual registro atualizar no banco+
                     echo "<tr data-id='{$usuario_id}'>"; 
                     echo "<td> <input type='text' class='campo-edicao' name='nome' value='{$nome}' disabled></td>";
                     echo "<td> <input type='text' class='campo-edicao' name='nome_usuario' value='{$nome_usuario}' disabled></td>";
@@ -76,6 +76,8 @@ require_once "../../Backend/Classes/Usuario.php";
             ?>
         </tbody>
     </table>
+    <br>
+    <button id="btn-novo-usuario">NOVO USUÁRIO</button>
     <script src="../../Frontend/Telas/js/update_usuario.js" defer></script>
 </body>
 

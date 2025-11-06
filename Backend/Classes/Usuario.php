@@ -81,4 +81,21 @@ class Usuario
         }
     }
 
+    public function inserirUsuario($dados)
+    {
+        try {
+            $this->conexao = new Conexao();
+            $query = "INSERT INTO usuario (nome, nome_usuario, email, tipo_acesso, status_acesso)
+                  VALUES (:nome, :nome_usuario, :email, :tipo_acesso, :status_acesso)";
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindParam(':nome', $dados['nome']);
+            $stmt->bindParam(':nome_usuario', $dados['nome_usuario']);
+            $stmt->bindParam(':email', $dados['email']);
+            $stmt->bindParam(':tipo_acesso', $dados['tipo_acesso']);
+            $stmt->bindParam(':status_acesso', $dados['status_acesso']);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            throw new Exception("Erro ao inserir usuário: " . $e->getMessage());
+        }
+    }
 }

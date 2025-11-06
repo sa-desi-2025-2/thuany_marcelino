@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const tabela = document.querySelector('table');
+    const botaoNovoUsuario = document.getElementById('btn-novo-usuario');
 
     // adiciona um identificador de cliques em toda a tabela, nos botões
     tabela.addEventListener('click', (evento) => {
@@ -11,11 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
             iniciarEdicao(linha, elementoClicado);
         } else if (elementoClicado.classList.contains('btn-salvar')) {
             salvarAlteracoes(linha, elementoClicado);
+        } else if (elementoClicado.classList.contains('btn-novo-usuario')) {
+            salvarNovoUsuario(linha, elementoClicado);
         } else if (elementoClicado.value === 'DESABILITAR' || elementoClicado.value === 'HABILITAR') {
             alternarStatus(linha, elementoClicado);
         }
-
     });
+    if (botaoNovoUsuario) {
+        botaoNovoUsuario.addEventListener('click', () => {
+            adicionarNovaLinha(tabela);
+        });
+    }
 });
 
 function iniciarEdicao(linha, botaoEditar) {
@@ -110,24 +117,77 @@ function alternarStatus(linha, botaoStatus) {
         body: dados,
         credentials: 'same-origin'
     })
-    // Transforma resposta em JSON
-    .then(response => response.json())
-    .then(json => {
-        if (json.success) {
-            alert(json.message || `Usuário agora está ${novoStatus}.`);
+        // Transforma resposta em JSON
+        .then(response => response.json())
+        .then(json => {
+            if (json.success) {
+                alert(json.message || `Usuário agora está ${novoStatus}.`);
 
-            // Atualiza o texto da célula e o botão na tabela sem recarregar
-            const celulaStatus = linha.children[4];
-            celulaStatus.textContent = novoStatus;
+                // Atualiza o texto da célula e o botão na tabela sem recarregar
+                const celulaStatus = linha.children[4];
+                celulaStatus.textContent = novoStatus;
 
-            botaoStatus.value = novoStatus === 'ATIVO' ? 'DESABILITAR' : 'HABILITAR';
-        } else {
-            alert('Falha ao atualizar status: ' + (json.message || 'Sem detalhe'));
-        }
+                botaoStatus.value = novoStatus === 'ATIVO' ? 'DESABILITAR' : 'HABILITAR';
+            } else {
+                alert('Falha ao atualizar status: ' + (json.message || 'Sem detalhe'));
+            }
+        })
+        // trata erros de conexao
+        .catch(err => {
+            console.error('Erro ao alterar status:', err);
+            alert('Erro ao comunicar com o servidor.');
+        });
+}
+
+function adicionarNovaLinha(tabela) {
+    const tbody = tabela.querySelector('tbody');
+    const novaLinha = document.createElement('tr');
+    novaLinha.setAttribute('data-id', 'novo_' + Date.now());
+
+    novaLinha.innerHTML = `
+                <td><input type="text" name="nome" class="campo-edicao"></td>
+                <td><input type="text" name="nome_usuario" class="campo-edicao"></td>
+                <td><input type="email" name="email" class="campo-edicao"></td>
+                <td>
+                    <select name="tipo_acesso" class="campo-edicao">
+                        <option value="USUÁRIO">USUÁRIO</option>
+                        <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                    </select>
+                </td>
+                <td>ATIVO</td>
+                <td>
+                    <button type="button" class="btn-novo-usuario">NOVO USUÁRIO</button>
+                </td>
+            `;
+
+    tbody.appendChild(novaLinha);
+}
+
+function salvarNovoUsuario(linha, botaoSalvar) {
+    const campos = linha.querySelectorAll('.campo-edicao');
+    const dados = new URLSearchParams();
+
+    campos.forEach(campo => dados.append(campo.name, campo.value));
+    dados.append('status_acesso', 'ATIVO');
+
+    const url_insert = '../../Backend/Main/main_insert.php';
+
+    fetch(url_insert, {
+        method: 'POST',
+        body: dados,
+        credentials: 'same-origin'
     })
-    // trata erros de conexao
-    .catch(err => {
-        console.error('Erro ao alterar status:', err);
-        alert('Erro ao comunicar com o servidor.');
-    });
+        .then(response => response.json())
+        .then(json => {
+            if (json.success) {
+                alert(json.message || 'Usuário cadastrado com sucesso!');
+                location.reload(); // recarrega tabela pra exibir novo usuário
+            } else {
+                alert('Erro ao cadastrar: ' + (json.message || 'Sem detalhe'));
+            }
+        })
+        .catch(err => {
+            console.error('Erro ao cadastrar novo usuário:', err);
+            alert('Falha na comunicação com o servidor.');
+        });
 }
