@@ -11,7 +11,7 @@ session_start();
 <body>
     <h2>Login</h2>
 
-    <form action="Backend/Main/main_login.php" method="POST">
+    <form action="../../Backend/Main/main_login.php" method="POST">
         <label>Nome de Usuário:</label><br>
         <input type="text" name="nome_usuario" required><br><br>
 

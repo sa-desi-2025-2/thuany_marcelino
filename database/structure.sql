@@ -3,7 +3,7 @@ id_usuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100), 
 email VARCHAR(100), 
 nome_usuario VARCHAR(100), 
-senha VARCHAR(100), 
+senha VARCHAR(100) DEFAULT('a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'), 
 tipo_acesso BINARY, 
 status_acesso ENUM('ativo', 'inativo') 
 );

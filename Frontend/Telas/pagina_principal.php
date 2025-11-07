@@ -8,9 +8,7 @@
 </head>
 
 <body>
-    <form method="post" action="../../Backend/Main/main_cadastro.php">
-        <input type="submit" value="Configuração de usuario">
-    </form>
+    <a href="../../Backend/Main/main_cadastro.php">gerenciar usuário</a>
 
 </body>
 
