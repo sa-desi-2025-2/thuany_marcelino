@@ -31,20 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // Verifica se foi enviado algo pel
             } else {
 
                 $_SESSION['erro_login'] = "Senha incorreta!";
-                header("Location: ../../Frontend/Telas/login.php");
+                header("Location: ../../index.php");
                 exit;
             }
         } else {
             $_SESSION['erro_login'] = "Usuário não encontrado!";
-            header("Location: ../../Frontend/Telas/login.php");
+            header("Location: ../../index.php");
             exit;
         }
     } catch (Exception $e) {
         $_SESSION['erro_login'] = "Erro ao processar login: " . $e->getMessage();
-        header("Location: ../../Frontend/Telas/login.php");
+        header("Location: ../../index.php");
         exit;
     }
 } else {
-    header("Location: ../../Frontend/Telas/login.php");
+    header("Location: ../../index.php");
     exit;
 }
