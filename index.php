@@ -51,16 +51,6 @@ session_start();
                     }
                     ?>
                 </div>
-
-                <!-- Administrador -->
-                <div class="text-center mt-4">
-                    <h4>É administrador?</h4>
-                    <a href="login_admin.php" 
-                       class="btn mt-2 px-4" 
-                       style="background-color: #0b3553; color: white; border-radius: 8px;">
-                       Sou Administrador
-                    </a>
-                </div>
             </div>
         </div>
     </div>
