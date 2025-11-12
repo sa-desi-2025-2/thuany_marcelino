@@ -25,7 +25,6 @@
                 <a href="../../Backend/Main/main_cadastro.php"
                     style="font-size: 17px; color: #333; text-decoration: none;"><i class="bi bi-person-gear"
                         style="font-size: 20px; margin-right: 5px;"></i> Gerenciar usuários</a>
-                <!-- arrumar o direcionamento do link abaixo -->
                 <a href="../../index.php"
                     style="font-size: 17px; color: #333; text-decoration: none;"><i class="bi bi-arrow-bar-left"
                         style="font-size: 20px; margin-right: 5px;"></i> Sair</a>
@@ -45,12 +44,12 @@
                         <b>Fábrica 2</b>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Linha 1</a></li>
-                        <li><a class="dropdown-item" href="#">Linha 2</a></li>
-                        <li><a class="dropdown-item" href="#">Linha 3</a></li>
-                        <li><a class="dropdown-item" href="#">Linha 6</a></li>
-                        <li><a class="dropdown-item" href="#">Linha 8</a></li>
-                        <li><a class="dropdown-item" href="#">Linha 9</a></li>
+                        <li><a class="dropdown-item">Linha 1</a></li>
+                        <li><a class="dropdown-item">Linha 2</a></li>
+                        <li><a class="dropdown-item">Linha 3</a></li>
+                        <li><a class="dropdown-item">Linha 6</a></li>
+                        <li><a class="dropdown-item">Linha 8</a></li>
+                        <li><a class="dropdown-item">Linha 9</a></li>
                     </ul>
                 </div>
                 <!-- Menu suspenso Fábrica 3 -->
@@ -60,9 +59,9 @@
                         <b>Fábrica 3</b>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Linha 1</a></li>
-                        <li><a class="dropdown-item" href="#">Linha 2</a></li>
-                        <li><a class="dropdown-item" href="#">Linha 3</a></li>
+                        <li><a class="dropdown-item">Linha 1</a></li>
+                        <li><a class="dropdown-item">Linha 2</a></li>
+                        <li><a class="dropdown-item">Linha 3</a></li>
                     </ul>
                 </div>
             </div>

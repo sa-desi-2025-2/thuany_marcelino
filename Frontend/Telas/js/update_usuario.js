@@ -127,6 +127,21 @@ function alternarStatus(linha, botaoStatus) {
                 const celulaStatus = linha.children[4];
                 celulaStatus.textContent = novoStatus;
 
+                // Atualiza a cor do texto conforme o novo status
+                celulaStatus.classList.remove('text-success', 'text-danger');
+                celulaStatus.classList.add(novoStatus === 'ATIVO' ? 'text-success' : 'text-danger');
+                
+                // Atualiza texto e cor do botão
+                if (novoStatus === 'ATIVO') {
+                    botaoStatus.value = 'DESABILITAR';
+                    botaoStatus.classList.remove('btn-success');
+                    botaoStatus.classList.add('btn-danger');
+                } else {
+                    botaoStatus.value = 'HABILITAR'
+                    botaoStatus.classList.remove('btn-danger');
+                    botaoStatus.classList.add('btn-success');
+                }
+                
                 botaoStatus.value = novoStatus === 'ATIVO' ? 'DESABILITAR' : 'HABILITAR';
             } else {
                 alert('Falha ao atualizar status: ' + (json.message || 'Sem detalhe'));
@@ -156,7 +171,7 @@ function adicionarNovaLinha(tabela) {
                 </td>
                 <td>ATIVO</td>
                 <td>
-                    <button type="button" class="btn-novo-usuario">NOVO USUÁRIO</button>
+                    <button type="button" class="btn-novo-usuario btn btn-success">CADASTRAR</button>
                 </td>
             `;
 
