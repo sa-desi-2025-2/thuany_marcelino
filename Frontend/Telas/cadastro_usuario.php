@@ -45,7 +45,7 @@ require_once "../../Backend/Classes/Usuario.php";
         <div class="row h-100" style="flex: 1;">
             <div class="col d-flex justify-content-center align-items-center" style="background-color: #0b3553; color: white;">
                 <div class="text-center">
-                    <table class="table table-hover table-bordered" style="background: #F1F1E6" border="1">
+                    <table class="table table-hover table-bordered" style="background: #F1F1E6">
                         <thead class="table-secondary">
                             <tr>
                                 <th>NOME</th>

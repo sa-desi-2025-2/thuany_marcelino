@@ -6,7 +6,7 @@ require_once __DIR__ . "/../Classes/Linha.php";
 
 $Linha = new Linha();
 
-$lista = $Linha->select();
+$lista = $Linha->inserirLinha();
 
 require_once "../../Frontend/Telas/linha.php";
 

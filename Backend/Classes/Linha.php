@@ -13,10 +13,16 @@ class Linha {
         $this->id_usuario = $id_usuario;
     }
 
-    public function select(){
-        $this->conexao = new Conexao();
-        $consulta = $this->conexao->prepare("SELECT id_linha, nome_linha, id_usuario FROM linha");   
-        $consulta->execute();    
-        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    public function inserirLinha()
+    {
+        try {
+            $this->conexao = new Conexao();
+            $query = "INSERT INTO linha (nome_linha) VALUES (:nome_linha)";
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindParam(':nome_linha', $dados['nome_linha']);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            throw new Exception("Erro ao inserir linha: " . $e->getMessage());
+        }
     }
 }

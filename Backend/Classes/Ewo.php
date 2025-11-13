@@ -14,10 +14,16 @@ class Ewo {
         $this->numero_ewo = $numero_ewo;
     }
 
-    public function selecione(){
-        $this->conexao = new Conexao();
-        $consulta = $this->conexao->prepare("SELECT id_ewo, numero_ewo FROM ewo");   
-        $consulta->execute();    
-        return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    public function inserirEwo()
+    {
+        try {
+            $this->conexao = new Conexao();
+            $query = "INSERT INTO ewo (numero_ewo, link_documento) VALUES (:numero_ewo, :link_documento)";
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindParam(':numero_ewo, :link_documento', $dados['numero_ewo, link_documento']);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            throw new Exception("Erro ao inserir Ewo: " . $e->getMessage());
+        }
     }
 }

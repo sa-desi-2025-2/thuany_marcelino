@@ -25,9 +25,8 @@
                 <a href="../../Backend/Main/main_cadastro.php"
                     style="font-size: 17px; color: #333; text-decoration: none;"><i class="bi bi-person-gear"
                         style="font-size: 20px; margin-right: 5px;"></i> Gerenciar usuários</a>
-                <a href="../../index.php"
-                    style="font-size: 17px; color: #333; text-decoration: none;"><i class="bi bi-arrow-bar-left"
-                        style="font-size: 20px; margin-right: 5px;"></i> Sair</a>
+                <a href="../../index.php" style="font-size: 17px; color: #333; text-decoration: none;"><i
+                        class="bi bi-arrow-bar-left" style="font-size: 20px; margin-right: 5px;"></i> Sair</a>
             </div>
         </nav>
         <!-- Fim da Barra de navegação -->
@@ -63,6 +62,15 @@
                         <li><a class="dropdown-item">Linha 2</a></li>
                         <li><a class="dropdown-item">Linha 3</a></li>
                     </ul>
+                </div>
+            </div>
+            <div class="col-md-7 d-flex flex-column justify-content-center align-items-center bg-white">
+                <div>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" style="display: flex; justify-content: space-between; margin-right: 20px; background-color: #D1D3D4; border: none; border-radius: 5px; padding: 15px">Injetora de Gabinetes (seca)</button>
+                        <button type="button" style="display: flex; justify-content: space-between; margin-right: 20px; background-color: #D1D3D4; border: none; border-radius: 5px; padding: 15px">Shrink</button>
+                        <button type="button" style="display: flex; justify-content: space-between ; background-color: #D1D3D4; border: none; border-radius: 5px; padding: 15px">Carrossel de Testes</button>
+                    </div>
                 </div>
             </div>
         </div>

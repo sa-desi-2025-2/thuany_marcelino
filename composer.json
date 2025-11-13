@@ -1,0 +1,17 @@
+{
+    "name": "thuany_marcelino/thuany_marcelino",
+    "require": {
+        "google/apiclient": "^2.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "ThuanyMarcelino\\ThuanyMarcelino\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thuany-EMS",
+            "email": "thuany_marcelino@estudante.sc.senai.br"
+        }
+    ]
+}
