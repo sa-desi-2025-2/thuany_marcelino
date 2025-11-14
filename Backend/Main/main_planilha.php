@@ -8,32 +8,46 @@ require_once __DIR__ . "/../Classes/Maquina.php";
 require_once __DIR__ . "/../Classes/Linha.php";
 require_once __DIR__ . "/../Classes/Ewo.php";
 
-
 use \Classes\GoogleSheetService; // importa a classe GoogleSheetsSerce do Planilha
 
+$db = new Conexao();
 
 $leitorPlanilha = new GoogleSheetService();
-$idPlanilha = '19FPbSB4WxrAdRmdG_Xgc7MY5g6BvvAzI6Lwki7bUlEM'; // define ID da planilha que quer ler
-
+$idPlanilha = '19FPbSB4WxrAdRmdG_Xgc7MY5g6BvvAzI6Lwki7bUlEM';
 $dadosPlanilha = $leitorPlanilha->lerPlanilha($idPlanilha);
 
+$linhasDeDados = $dadosPlanilha['dados'];
 
-$maquina = new Maquina();
-// var_dump($dadosPlanilha);
-print_r($dadosPlanilha['dados'][3][2]);
-die();
+foreach ($linhasDeDados as $i => $linhaAtual) {
+    // IGNORA a primeira linha (cabeçalho da planilha)
+    if ($i == 0) {
+        continue;
+    }
 
+    // Verifica se a linha tem pelo menos a coluna EWO
+    // Se a linha tiver menos de 3 colunas, é uma linha em branco ou mal formatada.
+    if (count($linhaAtual) < 3) {
+        continue;
+    }
 
-$maquina->inserirMaquina();
+    // IGNORA a linha se o campo EWO [2] ou SETOR [7] estiver vazio
+    if (empty($linhaAtual[2]) || empty($linhaAtual[7])) {
+        continue;
+    }
+    $linha = new Linha();
+    $maquina = new Maquina();
+    $ewo = new Ewo();
 
+    $linha->nome_linha = trim($linhaAtual[6]);
 
-$linha = new Linha();
-$linha->nome_linha = $dadosPlanilha['SETOR'];
-$linha->inserirLinha();
+    $maquina->id_linha = $linha->selecionarOuInserir($db);
+ 
+    $maquina->nome_maquina = trim($linhaAtual[4]);
+    $ewo->id_maquina = $maquina->selecionarOuInserir($db);
 
-$ewo = new Ewo();
-$ewo->numero_ewo = $dadosPlanilha['EWO'];
-$ewo->link_documento = $dadosPlanilha['EWO'];
-$ewo->inserirEwo();
+    $ewo->numero_ewo = $linhaAtual[2];
+    $ewo->link_documento = $linhaAtual[3];
+    $ewo->inserirEwo($db);
 
+}
 ?>

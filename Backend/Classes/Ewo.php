@@ -14,14 +14,17 @@ class Ewo {
         $this->numero_ewo = $numero_ewo;
     }
 
-    public function inserirEwo()
+    public function inserirEwo(Conexao $conexao)
     {
         try {
-            $this->conexao = new Conexao();
-            $query = "INSERT INTO ewo (numero_ewo, link_documento) VALUES (:numero_ewo, :link_documento)";
-            $stmt = $this->conexao->prepare($query);
-            $stmt->bindParam(':numero_ewo, :link_documento', $dados['numero_ewo, link_documento']);
-            return $stmt->execute();
+            $query = "INSERT INTO ewo (numero_ewo, link_documento, id_maquina) VALUES (:numero_ewo, :link_documento, :id_maquina)";
+            $stmt = $conexao->prepare($query);
+            $params = [
+                ':numero_ewo'    => $this->numero_ewo,
+                ':link_documento' => $this->link_documento,
+                ':id_maquina' => $this->id_maquina
+            ];
+            return $stmt->execute($params);
         } catch (Exception $e) {
             throw new Exception("Erro ao inserir Ewo: " . $e->getMessage());
         }
