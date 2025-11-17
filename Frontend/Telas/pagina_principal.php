@@ -43,38 +43,21 @@
                         <b>Fábrica 2</b>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">Linha 1</a></li>
-                        <li><a class="dropdown-item">Linha 2</a></li>
-                        <li><a class="dropdown-item">Linha 3</a></li>
-                        <li><a class="dropdown-item">Linha 6</a></li>
-                        <li><a class="dropdown-item">Linha 8</a></li>
-                        <li><a class="dropdown-item">Linha 9</a></li>
-                    </ul>
-                </div>
-                <!-- Menu suspenso Fábrica 3 -->
-                <div class="dropdown">
-                    <button style="background-color: #0b3553; color: white; font-size: 3rem;"
-                        class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <b>Fábrica 3</b>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">Linha 1</a></li>
-                        <li><a class="dropdown-item">Linha 2</a></li>
-                        <li><a class="dropdown-item">Linha 3</a></li>
+                        <li data-linha="Linha1F2"><a class="dropdown-item">Linha 1</a></li>
+                        <li data-linha="Linha2F2"><a class="dropdown-item">Linha 2</a></li>
+                        <li data-linha="Linha3F2"><a class="dropdown-item">Linha 3</a></li>
+                        <li data-linha="Linha6"><a class="dropdown-item">Linha 6</a></li>
+                        <li data-linha="Linha8"><a class="dropdown-item">Linha 8</a></li>
+                        <li data-linha="Linha9"><a class="dropdown-item">Linha 9</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-7 d-flex flex-column justify-content-center align-items-center bg-white">
-                <div>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" style="display: flex; justify-content: space-between; margin-right: 20px; background-color: #D1D3D4; border: none; border-radius: 5px; padding: 15px">Injetora de Gabinetes (seca)</button>
-                        <button type="button" style="display: flex; justify-content: space-between; margin-right: 20px; background-color: #D1D3D4; border: none; border-radius: 5px; padding: 15px">Shrink</button>
-                        <button type="button" style="display: flex; justify-content: space-between ; background-color: #D1D3D4; border: none; border-radius: 5px; padding: 15px">Carrossel de Testes</button>
-                    </div>
-                </div>
+                <div id="maquinas-container">
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/mostrar_maquinas.js"></script>
 </body>
 
 </html>
