@@ -11,12 +11,7 @@ status_acesso ENUM('ativo', 'inativo')
 CREATE TABLE Linha ( 
 id_linha INT PRIMARY KEY AUTO_INCREMENT, 
 nome_linha VARCHAR(100), 
-id_usuario INT, 
-FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) );
-
-ALTER TABLE usuario 
-ADD id_linha INT, 
-ADD FOREIGN KEY(id_linha) REFERENCES linha(id_linha);
+);
 
 CREATE TABLE Maquina ( 
 id_maquina INT PRIMARY KEY AUTO_INCREMENT, 
