@@ -41,7 +41,7 @@ foreach ($linhasDeDados as $i => $linhaAtual) {
     $linha->nome_linha = trim($linhaAtual[6]);
 
     $maquina->id_linha = $linha->selecionarOuInserir($db);
- 
+
     $maquina->nome_maquina = trim($linhaAtual[4]);
     $ewo->id_maquina = $maquina->selecionarOuInserir($db);
 
@@ -50,4 +50,7 @@ foreach ($linhasDeDados as $i => $linhaAtual) {
     $ewo->inserirEwo($db);
 
 }
+
+    header('Location: /thuany_marcelino/index.php');
+    exit();
 ?>
