@@ -57,10 +57,10 @@ require_once "../../../../Backend/Classes/Usuario.php";
             <div class="col-md-2">
             </div>
             <div class="col-md-4">
-                <div class="card p-3">Tabela 1 de EWO</div>
+                <div class="card p-3">EWO</div>
             </div>
             <div class="col-md-4 d-flex flex-column align-items-end">
-                <div class="card p-3 mb-3 w-100">Tabela 2 de EWO nova</div>
+                <div class="card p-3 mb-3 w-100">EWO nova, colocar no quadro!</div>
                 <button class="btn btn-success">FEITO</button>
             </div>
             <div class="col-md-2">
