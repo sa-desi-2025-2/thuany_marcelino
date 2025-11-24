@@ -1,7 +1,4 @@
 <?php
-use Classes\Conexao;
-use Classes\Planilha;
-
 session_start(); // inicia a sessao armazenando os dados que receber
 require_once "../Classes/Conexao.php";
 require_once "../Classes/Usuario.php";
@@ -28,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // Verifica se foi enviado algo pel
                 $_SESSION['usuario_id'] = $usuario['id_usuario'];
                 $_SESSION['usuario_nome'] = $usuario['nome'];
                 $_SESSION['usuario_tipo'] = $usuario['tipo_acesso'];
-                $planilha = new Planilha();
-                $planilha->atualizarPlanilha();
+
                 header("Location: ../../Frontend/Telas/pagina_principal.php");
                 exit;
             } else {

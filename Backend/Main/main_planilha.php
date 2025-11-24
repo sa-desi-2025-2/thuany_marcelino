@@ -2,12 +2,19 @@
 
 require_once __DIR__ . "/../../vendor/autoload.php";
 
-use \Classes\Planilha; // importa a classe GoogleSheetsSerce do Planilha
-use \Classes\Conexao;
+require_once __DIR__ . "/../Classes/Conexao.php";
+require_once __DIR__ . "/../Classes/Planilha.php";
+require_once __DIR__ . "/../Classes/Maquina.php";
+require_once __DIR__ . "/../Classes/Linha.php";
+require_once __DIR__ . "/../Classes/Ewo.php";
+
+use \Classes\GoogleSheetService; // importa a classe GoogleSheetsSerce do Planilha
 
 $db = new Conexao();
 
-$leitorPlanilha->atualizarPlanilha();
+$leitorPlanilha = new GoogleSheetService();
+$idPlanilha = '19FPbSB4WxrAdRmdG_Xgc7MY5g6BvvAzI6Lwki7bUlEM';
+$dadosPlanilha = $leitorPlanilha->lerPlanilha($idPlanilha);
 
 $linhasDeDados = $dadosPlanilha['dados'];
 

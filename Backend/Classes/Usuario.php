@@ -1,5 +1,4 @@
 <?php
-use Classes\Conexao;
 class Usuario
 {
     public $id;

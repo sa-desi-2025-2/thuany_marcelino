@@ -1,8 +1,4 @@
 <?php
-namespace Classes;
-use PDO;
-use PDOException;
-
 class Conexao extends PDO
 {
     private $nome;
